@@ -1,14 +1,28 @@
-output "instance_id" {
+output "web1" {
   description = "ID of the EC2 instance"
-  value       = aws_instance.web_server.id
+  value       = aws_instance.web1.id
 }
 
-output "instance_public_ip" {
+output "web1_public_ip" {
   description = "Public IP address of the EC2 instance"
-  value       = aws_instance.web_server.public_ip
+  value       = aws_instance.web1.public_ip
 }
 
-output "instance_public_dns" {
+output "web1_public_dns" {
   description = "Public A record of the EC2 instance"
-  value       = aws_instance.web_server.public_dns
+  value       = aws_instance.web1.public_dns
+}
+output "web2" {
+  description = "ID of the EC2 instance"
+  value       = aws_instance.web2.id
+}
+
+output "web2_public_ip" {
+  description = "Public IP address of the EC2 instance"
+  value       = aws_instance.web2.public_ip
+}
+
+output "web2_public_dns" {
+  description = "Public A record of the EC2 instance"
+  value       = aws_instance.web2.public_dns
 }
