@@ -15,8 +15,8 @@ provider "aws" {
 }
 
 provider "aws" {
-  alias = "use2"
-  region  = "us-east-2"
+  alias = "usw1"
+  region  = "us-west-1"
 }
 
 resource "aws_instance" "web1" {
@@ -31,8 +31,8 @@ resource "aws_instance" "web1" {
 }
 
 resource "aws_instance" "web2" {
-  provider      = aws.use2
-  ami           = "${data.aws_ami.latest-amzn2-use2.id}"
+  provider      = aws.usw1
+  ami           = "${data.aws_ami.latest-amzn2-usw1.id}"
   instance_type = "t2.micro"
   security_groups = [ "allow_www_sg2", "allow_ssh_sg2", "default" ]
   key_name      = var.keyname
@@ -71,7 +71,7 @@ resource "aws_security_group" "allow_ssh_sg1" {
 }
 
 resource "aws_security_group" "allow_www_sg2" {
-  provider = aws.use2
+  provider = aws.usw1
   name = "allow_www_sg2"
 
   ingress {
@@ -89,7 +89,7 @@ resource "aws_security_group" "allow_www_sg2" {
 }
 
 resource "aws_security_group" "allow_ssh_sg2" {
-  provider = aws.use2
+  provider = aws.usw1
   name = "allow_ssh_sg2"
 
   ingress {
@@ -115,8 +115,8 @@ data "aws_ami" "latest-amzn2" {
   }
 }
 
-data "aws_ami" "latest-amzn2-use2" {
-  provider = aws.use2
+data "aws_ami" "latest-amzn2-usw1" {
+  provider = aws.usw1
   most_recent = true
   owners = ["137112412989"]
 
