@@ -1,3 +1,4 @@
 variables.tf
 terraform.*
 .terraform
+.terraform.lock.hcl
