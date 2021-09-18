@@ -67,12 +67,18 @@ resource "aws_security_group" "allow_ssh_sg1" {
 
 resource "aws_network_interface" "eni1" {
   subnet_id = "subnet-d64e26b2"
-  security_groups = [ "${aws_security_group.allow_www_sg1.id}", "${aws_security_group.allow_ssh_sg1.id}" ]
+  security_groups = [
+    "${aws_security_group.allow_www_sg1.id}",
+    "${aws_security_group.allow_ssh_sg1.id}"
+  ]
 }
 
 resource "aws_network_interface" "eni2" {
   subnet_id = "subnet-4490356b"
-  security_groups = [ "${aws_security_group.allow_www_sg1.id}", "${aws_security_group.allow_ssh_sg1.id}" ]
+  security_groups = [
+    "${aws_security_group.allow_www_sg1.id}",
+    "${aws_security_group.allow_ssh_sg1.id}"
+  ]
 }
 
 resource "aws_instance" "web1" {
